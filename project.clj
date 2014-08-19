@@ -4,13 +4,16 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  ;; CLJ AND CLJS source code path
   :source-paths ["src/clj" "src/cljs"]
+  
   :dependencies [[org.clojure/clojure "1.6.0"]
-                 [org.clojure/clojurescript "0.0-2311"]]
+                 [org.clojure/clojurescript "0.0-2311"]
+                 [compojure "1.1.6"]]
 
-  ;; lein-cljsbuild plugin to build a CLJS project
-  :plugins [[lein-cljsbuild "1.0.3"]]
+  :plugins [[lein-cljsbuild "1.0.3"]
+            [lein-ring "0.8.11"]]
+
+  :ring {:handler modern-cljs.core/handler}
 
   ;; cljsbuild options configuration
   :cljsbuild {:builds
