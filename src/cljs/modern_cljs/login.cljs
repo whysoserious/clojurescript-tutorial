@@ -1,12 +1,13 @@
-(ns modern-cljs.login)
+(ns modern-cljs.login
+  (:use [domina :only [by-id value]]))
 
 (defn validate-form []
-  (let [email (.getElementById js/document "email")
-        password (.getElementById js/document "password")]
-    (if (and (> (count (.-value email)) 0)
-             (> (count (.-value password)) 0))
+  (let [email (by-id "email")
+        password (by-id "password")]
+    (if (and (> (count (value email)) 0)
+             (> (count (value password)) 0))
       true
-      (do (js/alert "Pleasem complete the form!")
+      (do (js/alert "Please, complete the form!")
           false))))
 
 (defn init []
